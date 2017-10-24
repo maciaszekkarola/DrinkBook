@@ -1,0 +1,13 @@
+<a class = "list-group-item clearfix" [routerLink] = "[index]">
+    <div class="pull-left">
+        <h4 class = "list-group-item-heading">{{ drink.strDrink }}</h4>
+        <!-- <p class="list-group-item-text">{{ drink.idDrink }}</p> -->
+    </div>
+    <span class="pull-right">
+        <img 
+            [src]="drink.strDrinkThumb"
+            alt="{{ drink.strDrink }}" 
+            class="img-responsive" 
+            style="max-height: 90px;">
+    </span>
+</a>

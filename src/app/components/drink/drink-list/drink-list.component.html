@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-xs-12 pre-scrollable" style="max-height: 80vh">
+   <app-drink-item
+      (click)="onSelect(drink.idDrink)"
+      *ngFor="let drink of drinkBook; let i=index"
+      [drink]="drink"
+      [index]="drink.idDrink"
+    ></app-drink-item>
+  </div>
+</div>  
+

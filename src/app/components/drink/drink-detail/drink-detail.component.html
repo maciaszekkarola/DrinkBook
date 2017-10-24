@@ -1,0 +1,33 @@
+<div class="row">
+  <!-- superImportant! first check if drinkitem exists! -->
+  <div class="col-xs-12" *ngIf="drinkItem">
+    <h2>{{drinkItem.strDrink}} </h2>
+    <h3>{{drinkItem.strAlcoholic}}</h3>
+    <h3>{{drinkItem.strGlass}}</h3>
+    <h3>{{drinkItem.strInstructions}}</h3>
+    
+    <ul>
+      <li>
+        {{drinkItem.strIngredient1}}
+      </li>
+      <li>
+        {{drinkItem.strIngredient2}}
+      </li>
+      <li>
+        {{drinkItem.strIngredient3}}
+      </li>
+      <li>
+        {{drinkItem.strIngredient4}}
+      </li>
+    </ul>
+    <img 
+    class="img-responsive"
+    style="max-height: 300px;"
+    [src]="drinkItem.strDrinkThumb" 
+    alt="drinkItem.strDrink">
+  </div>
+  <button 
+  class="btn btn-primary"
+  (click)="onAdd()"
+  >Add</button>
+</div>
