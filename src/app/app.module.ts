@@ -1,3 +1,4 @@
+import { MyCollectionModule } from './components/my-collection/my-collection.module';
 import { AppRoutingModule } from './app-routing.module';
 import { DrinkEffects } from './components/drink/store/drink.effects';
 import { EffectsModule } from '@ngrx/effects';
@@ -21,16 +22,14 @@ import { DrinkItemComponent } from './components/drink/drink-list/drink-item/dri
 import { DrinkDetailComponent } from './components/drink/drink-detail/drink-detail.component';
 import { DrinkComponent } from './components/drink/drink.component';
 import { HomeComponent } from './components/home/home.component';
-import { MyCollectionComponent } from './components/my-collection/my-collection.component';
 import { drinkReducers } from './components/drink/store/drink.reducers';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MyCollectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +40,8 @@ import { drinkReducers } from './components/drink/store/drink.reducers';
     EffectsModule.forRoot([DrinkEffects]),
     StoreRouterConnectingModule,
     DrinkModule,
+    MyCollectionModule,
+    NgbModule.forRoot()
   ],
   providers: [DataService, CollectionService],
   bootstrap: [AppComponent]

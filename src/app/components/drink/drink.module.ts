@@ -1,7 +1,7 @@
 import { DrinkEffects } from './store/drink.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { DrinkRoutingModule } from './drink-routing.module';
 import { DrinkComponent } from './drink.component';
@@ -25,7 +25,8 @@ import { drinkReducers } from './store/drink.reducers';
       CommonModule,
       DrinkRoutingModule,
       StoreModule.forFeature('drinks', drinkReducers),
-      EffectsModule.forFeature([DrinkEffects])
+      EffectsModule.forFeature([DrinkEffects]),
+      NgbModule
     ]
   })
 

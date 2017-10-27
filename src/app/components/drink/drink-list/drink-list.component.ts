@@ -10,7 +10,7 @@ import { unsubscriber } from '../../../shared/unsubscriber';
 import * as DrinkActions from '../store/drink.actions';
 
 import * as fromDrink from '../store/drink.reducers';
-import * as fromApp from '../../../app.reducers';
+// import * as fromApp from '../../../app.reducers';
 
 @Component({
   selector: 'app-drink-list',
@@ -37,7 +37,7 @@ export class DrinkListComponent implements OnInit, OnDestroy {
     this.store.select('drinks').subscribe(
       (dataState) => {
         this.drinkBook = dataState['drinks'];
-        console.log(dataState);
+        // console.log(dataState);
       }
     );
 
