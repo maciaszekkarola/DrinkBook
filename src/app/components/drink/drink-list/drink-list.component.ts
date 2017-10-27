@@ -29,6 +29,7 @@ export class DrinkListComponent implements OnInit, OnDestroy {
               private dataService: DataService,
               private router: Router,
               private route: ActivatedRoute) {
+                // wysyłam do store akcję FetchDrinks(), która jako side effect ma pobranie w effectach z service (http.get())
                this.store.dispatch(new DrinkActions.FetchDrinks());
               }
 
@@ -45,6 +46,8 @@ export class DrinkListComponent implements OnInit, OnDestroy {
   onSelect(id: number) {
     this.selectedDrinkId = id;
     this.dataService.getDrink(id);
+    console.log(id);
+    this.selectedDrinkId = id;
   }
 
   ngOnDestroy() {

@@ -4,7 +4,7 @@
       (click)="onSelect(drink.idDrink)"
       *ngFor="let drink of drinkBook; let i=index"
       [drink]="drink"
-      [index]="index"
+      [index]="drink.idDrink"
     ></app-drink-item>
   </div>
 </div>  

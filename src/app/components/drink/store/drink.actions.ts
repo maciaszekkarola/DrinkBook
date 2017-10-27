@@ -7,6 +7,7 @@ export const GET_DRINKS = 'GET_DRINKS';
 export const FETCH_DRINKS = 'FETCH_DRINKS';
 
 @Injectable()
+// ta akcja tylko sygnalizuje store ze chce wykonać GetDrinks
 export class FetchDrinks implements Action {
     readonly type = FETCH_DRINKS;
     constructor () {}
