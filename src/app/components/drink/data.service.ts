@@ -1,4 +1,3 @@
-import { CollectionService } from './../my-collection/collection.service';
 import { DrinkItem } from './../../models/drinkItem.model';
 import { Drink } from './../../models/drink.model';
 import { Injectable } from '@angular/core';
@@ -12,32 +11,22 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 
 export class DataService {
-  private drinkBook: Drink[] = [];
   private drinkItem: DrinkItem;
   private url = 'http://www.thecocktaildb.com/api/json/v1/1/';
 
-  constructor(public http: Http,
-              private collectionService: CollectionService) { }
+  constructor(public http: Http) { }
 
   getDrinks(): Observable<Drink[]> {
     return this.http.get(`${this.url}filter.php?i=vodka`)
-      .map((res: Response) => res.json())
-      .do(res => {
-        res = res['drinks'];
-        this.drinkBook.push(res);
-    });
+      .map((res: Response) => res.json());
   }
 
-  getDrink(id: number) {
+  getDrink(id: number): Observable<Drink> {
     return this.http.get(`${this.url}lookup.php?i=${id}`)
-      .map((res: Response) => res.json())
-      .do(res => {
-        this.drinkItem = res['drinks'][0];
-      });
+      .map((res: Response) => res.json());
   }
 
   onAddDrink(drink: DrinkItem) {
-    
   }
 
 

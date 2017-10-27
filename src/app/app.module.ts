@@ -1,3 +1,7 @@
+import { DrinkEffects } from './components/drink/store/drink.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './app.reducers';
 import { DrinkModule } from './components/drink/drink.module';
 import { CollectionService } from './components/my-collection/collection.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,6 +21,7 @@ import { DrinkDetailComponent } from './components/drink/drink-detail/drink-deta
 import { DrinkComponent } from './components/drink/drink.component';
 import { HomeComponent } from './components/home/home.component';
 import { MyCollectionComponent } from './components/my-collection/my-collection.component';
+import { drinkReducers } from './components/drink/store/drink.reducers';
 
 
 const routes: Routes = [
@@ -35,8 +40,10 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([DrinkEffects]),
     RouterModule.forRoot(routes),
-    DrinkModule
+    DrinkModule,
   ],
   providers: [DataService, CollectionService],
   bootstrap: [AppComponent]

@@ -40,7 +40,6 @@ export class DrinkDetailComponent implements OnInit, OnDestroy {
   }
 
   onAdd() {
-    // przesyłam drinkItem p
   }
 
 
