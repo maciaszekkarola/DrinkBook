@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { DrinkEffects } from './components/drink/store/drink.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -11,7 +12,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { NgModel } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 
 import { AppComponent } from './app.component';
@@ -24,11 +25,6 @@ import { MyCollectionComponent } from './components/my-collection/my-collection.
 import { drinkReducers } from './components/drink/store/drink.reducers';
 
 
-const routes: Routes = [
-  {path: '', redirectTo: '/drink', pathMatch: 'full'},
-  {path: 'myCollection', component: MyCollectionComponent},
-];
-
 
 @NgModule({
   declarations: [
@@ -40,9 +36,10 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    AppRoutingModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([DrinkEffects]),
-    RouterModule.forRoot(routes),
+    StoreRouterConnectingModule,
     DrinkModule,
   ],
   providers: [DataService, CollectionService],

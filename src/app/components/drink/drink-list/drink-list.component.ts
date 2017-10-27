@@ -1,3 +1,4 @@
+import { FetchDrinks } from './../store/drink.actions';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,6 +7,10 @@ import { Drink } from './../../../models/drink.model';
 import { DataService } from './../data.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { unsubscriber } from '../../../shared/unsubscriber';
+import * as DrinkActions from '../store/drink.actions';
+
+import * as fromDrink from '../store/drink.reducers';
+import * as fromApp from '../../../app.reducers';
 
 @Component({
   selector: 'app-drink-list',
@@ -17,28 +22,21 @@ export class DrinkListComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   selectedDrinkId: number;
 
-  drinkState$: Observable<any>;
+  drinkState$: Observable<fromDrink.State>;
 
   constructor(
-              private store: Store<any>,
+              private store: Store<fromDrink.FeatureState>,
               private dataService: DataService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+               this.store.dispatch(new DrinkActions.FetchDrinks());
+              }
 
   ngOnInit() {
-    // this.subscriptions.push(this.dataService.getDrinks()
-    // .subscribe(
-    //   (data: Drink[]) => {
-    //     this.drinkBook = data['drinks'];
-    //     console.log(this.drinkBook);
-    //   }
-    // ));
-
-    this.drinkState$ = this.store.select('drinks');
-    this.drinkState$.subscribe(
-      (dataState: Drink[]) => {
+    this.store.select('drinks').subscribe(
+      (dataState) => {
         this.drinkBook = dataState['drinks'];
-        console.log(this.drinkBook);
+        console.log(dataState);
       }
     );
 
