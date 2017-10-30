@@ -3,7 +3,7 @@ import { Action } from '@ngrx/store';
 
 export const ADD_DRINKS = 'ADD_DRINKS';
 export const FETCH_DRINKS = 'FETCH_DRINKS';
-export const REMOVE_DRINK = 'REMOVE_DRINK';
+export const UPDATE_COLLECTION = 'UPDATE_COLLECTION';
 
 
 export class FetchDrinks implements Action {
@@ -14,12 +14,12 @@ export class AddDrinks implements Action {
     constructor(public payload: number) {}
 }
 
-export class RemoveDrink implements Action {
-    readonly type = REMOVE_DRINK;
+export class UpdateCollection implements Action {
+    readonly type = UPDATE_COLLECTION;
     constructor(public payload: number) {}
 }
 
 
 
-export type CollectionAction = AddDrinks | FetchDrinks | RemoveDrink;
+export type CollectionAction = AddDrinks | FetchDrinks | UpdateCollection;
 

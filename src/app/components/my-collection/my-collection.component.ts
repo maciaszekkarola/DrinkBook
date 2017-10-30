@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 
 import * as fromCollection from './store/collection.reducers';
 import * as CollectionActions from './store/collection.actions';
+import * as fromApp from '../../app.reducers';
 
 @Component({
   selector: 'app-my-collection',
@@ -25,20 +26,16 @@ export class MyCollectionComponent implements OnInit {
   drinkArr = [];
 
   constructor(private dataService: DataService,
-              private store: Store<AppState>
-            ) {
-            }
+              private store: Store<fromApp.AppState>) {}
 
   ngOnInit() {
     this.store.select('collections').subscribe(
       (dataState) => {
         this.collection = dataState.selectedDrinks;
-        console.log(this.collection);
       }
     );
 
     for (let i = 0; i < this.collection.length; i++) {
-      console.log(this.collection[i]);
       this.dataService.getDrink(this.collection[i])
       .subscribe(
         (data) => {
@@ -47,9 +44,16 @@ export class MyCollectionComponent implements OnInit {
             id: data['drinks'][0].idDrink,
             path: data['drinks'][0].strDrinkThumb
           };
-          if (!this.drinkArr.includes(this.drink)) {
+          console.log(this.drinkArr, this.drink['id']);
+          // if (!this.drinkArr.includes(this.drink['id'])) {
              this.drinkArr.push(this.drink);
-          }
+          // }
+
+
+
+          
+          
+
         }
       );
     }
@@ -57,7 +61,9 @@ export class MyCollectionComponent implements OnInit {
 
   onDelete(index) {
     this.drinkArr.splice(index, 1);
-    this.store.dispatch(new CollectionActions.RemoveDrink(index));
+    this.store.dispatch(new CollectionActions.UpdateCollection(index));
+    // console.log(index, this.drinkArr);
+    console.log(index);
   }
 
 }
