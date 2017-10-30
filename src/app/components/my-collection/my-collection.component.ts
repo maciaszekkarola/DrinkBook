@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Observable';
+import { DrinkItem } from './../../models/drinkItem.model';
 import { AppState } from './../../app.reducers';
 import { Store } from '@ngrx/store';
 import { Drink } from './../../models/drink.model';
@@ -15,22 +17,42 @@ import * as CollectionActions from './store/collection.actions';
 })
 export class MyCollectionComponent implements OnInit {
   collection: number[] = [];
-  collectedDrink: number;
+  drink: Drink = {
+    name: null,
+    id: null,
+    path: null
+  };
+  drinkArr = [];
 
   constructor(private dataService: DataService,
-              private collectionService: CollectionService,
               private store: Store<AppState>
-            ) {}
+            ) {
+            }
 
   ngOnInit() {
     this.store.select('collections').subscribe(
       (dataState) => {
-        this.collectedDrink = dataState.selectedDrink;
         this.collection = dataState.selectedDrinks;
         console.log(this.collection);
       }
     );
 
+    for (let i = 0; i < this.collection.length; i++) {
+      console.log(this.collection[i]);
+      this.dataService.getDrink(this.collection[i])
+      .subscribe(
+        (data) => {
+          this.drink = {
+            name: data['drinks'][0].strDrink,
+            id: data['drinks'][0].idDrink,
+            path: data['drinks'][0].strDrinkThumb
+          };
+          if (!this.drinkArr.includes(this.drink)) {
+             this.drinkArr.push(this.drink);
+          }
+        }
+      );
+    }
 
 
   }

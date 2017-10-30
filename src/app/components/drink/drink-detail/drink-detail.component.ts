@@ -46,7 +46,6 @@ export class DrinkDetailComponent implements OnInit, OnDestroy {
 
   onAdd() {
     this.store.dispatch(new CollectionActions.AddDrinks(this.idDrink));
-    console.log(this.idDrink + ' DrinkDetail Component');
   }
 
 

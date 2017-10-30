@@ -8,7 +8,7 @@ export interface State {
 
 const initialState: State = {
     selectedDrink: null,
-    selectedDrinks: []
+    selectedDrinks: [],
 };
 
 export function collectionReducers(state = initialState, action: CollectionActions.CollectionAction) {

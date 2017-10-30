@@ -16,14 +16,6 @@ export class DrinkEffects {
     .switchMap( () => this.dataService.getDrinks())
     .map((payload: Drink[]) => new DrinkAction.GetDrinks(payload));
 
-    // @Effect() init$: Observable<Action> = this.actions$
-    // .ofType(DrinkAction.FETCH_DRINKS)
-    // .switchMap(() => this.dataService.getDrinks())
-    // .map(payload => {
-    //   console.log(payload, 'payload');
-    //   return new DrinkAction.GetDrinks(payload);
-    // });
-
     constructor(
         private dataService: DataService,
         private actions$: Actions) {}

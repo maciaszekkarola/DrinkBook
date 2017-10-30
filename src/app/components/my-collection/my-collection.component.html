@@ -1,11 +1,22 @@
 <div class="container-fluid">
+
   <div class="row">
-    <div class="col-xs-12">
-      <ul class="list-group">
+    <div class="col-xs-6 col-xs-offset-3">
+      <ul class="list-group" style="list-style-type: none">
         <li 
-        *ngFor="let item of collection"
-        class="class-list-group-item">{{item}}</li>
+          *ngFor="let item of drinkArr, let i = index"
+          class="list-group-item clearfix listItem">
+          <h4 class="list-group-item-heading pull-left">
+              {{ item.name }} 
+          </h4>
+          <img 
+            [src]="item.path" 
+            [alt]="item.name"
+            class="img-responsive pull-right"
+            style="max-height: 100px">
+        </li>
       </ul>
     </div>
   </div>
+
 </div>
