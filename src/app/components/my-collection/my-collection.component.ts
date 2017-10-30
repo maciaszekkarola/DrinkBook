@@ -45,14 +45,17 @@ export class MyCollectionComponent implements OnInit {
             path: data['drinks'][0].strDrinkThumb
           };
           console.log(this.drinkArr, this.drink['id']);
+
+        //  this.drinkArr.forEach(element => {
+        //    console.log(element['id]']);
+        //    if (element['id'] !== this.drink ) {
+        //     this.drinkArr.push(this.drink);
+        //    }
+        //  });
           // if (!this.drinkArr.includes(this.drink['id'])) {
+            // jesli this.drink[id] = drinkArr[drink[id]] ?????
              this.drinkArr.push(this.drink);
           // }
-
-
-
-          
-          
 
         }
       );
@@ -62,8 +65,6 @@ export class MyCollectionComponent implements OnInit {
   onDelete(index) {
     this.drinkArr.splice(index, 1);
     this.store.dispatch(new CollectionActions.UpdateCollection(index));
-    // console.log(index, this.drinkArr);
-    console.log(index);
   }
 
 }

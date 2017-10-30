@@ -27,8 +27,8 @@ export function collectionReducers(state = initialState, action: CollectionActio
         const index = state.selectedIndex;
         oldCollections.splice(index, 1);
 
-        console.log(state.selectedDrinks);
-        console.log(oldCollections, index);
+        // console.log(state.selectedDrinks);
+        // console.log(oldCollections, index);
 
         return {
             ...state,
