@@ -20,25 +20,14 @@ export class MyCollectionComponent implements OnInit {
   constructor(private dataService: DataService,
               private collectionService: CollectionService,
               private store: Store<AppState>
-            ) {
-              // this.store.dispatch(new CollectionActions.FetchDrinks());
-            }
+            ) {}
 
   ngOnInit() {
-    // this.store.select('collections', 'selectedDrink').subscribe(
-    //   (dataState) => {
-    //     this.collectedDrink = dataState;
-    //     console.log(dataState, 'datastate');
-    //   }
-    // );
-
     this.store.select('collections').subscribe(
       (dataState) => {
         this.collectedDrink = dataState.selectedDrink;
-        this.collection.push(this.collectedDrink);
-
-        
-        console.log(dataState, 'datastate');
+        this.collection = dataState.selectedDrinks;
+        console.log(this.collection);
       }
     );
 

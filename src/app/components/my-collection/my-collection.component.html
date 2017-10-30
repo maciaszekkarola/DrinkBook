@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col-xs-12">
       <ul class="list-group">
-        <li class="class-list-group-item"> {{collectedDrink}}</li>
+        <li 
+        *ngFor="let item of collection"
+        class="class-list-group-item">{{item}}</li>
       </ul>
     </div>
   </div>
