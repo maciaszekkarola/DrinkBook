@@ -19,6 +19,12 @@ export function collectionReducers(state = initialState, action: CollectionActio
             selectedDrink: action.payload,
             selectedDrinks: [...state.selectedDrinks, action.payload]
         };
+
+        case CollectionActions.REMOVE_DRINK:
+        return {
+            ...state,
+            selectedDrinks: [...state.selectedDrinks]
+        };
         default:
         return state;
     }

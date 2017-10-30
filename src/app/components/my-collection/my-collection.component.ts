@@ -53,8 +53,11 @@ export class MyCollectionComponent implements OnInit {
         }
       );
     }
+  }
 
-
+  onDelete(index) {
+    this.drinkArr.splice(index, 1);
+    this.store.dispatch(new CollectionActions.RemoveDrink(index));
   }
 
 }
