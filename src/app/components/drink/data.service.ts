@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 
 export class DataService {
-  private drinkItem: DrinkItem;
+  // private drinkItem: DrinkItem;
   private url = 'http://www.thecocktaildb.com/api/json/v1/1/';
 
   constructor(public http: Http) { }

@@ -1,15 +1,13 @@
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
-import { CollectionService } from './../../my-collection/collection.service';
-import { Subscription } from 'rxjs/Subscription';
-import { DrinkItem } from './../../../models/drinkItem.model';
-import { DataService } from './../data.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs/Subscription';
+
+import { DrinkItem } from './../../../models/drinkItem.model';
+import { DataService } from './../data.service';
 import { unsubscriber } from '../../../shared/unsubscriber';
 
-import * as fromDrink from '../store/drink.reducers';
-import * as DrinkActions from '../store/drink.actions';
 import * as fromCollection from '../../my-collection/store/collection.reducers';
 import * as CollectionActions from '../../my-collection/store/collection.actions';
 
@@ -22,12 +20,10 @@ export class DrinkDetailComponent implements OnInit, OnDestroy {
   idDrink: number;
   drinkItem: DrinkItem;
   subscriptions: Subscription[] = [];
-  drinkState$: Observable<fromDrink.State>;
 
   constructor(private route: ActivatedRoute,
               private dataService: DataService,
-              private store: Store<fromDrink.FeatureState>,
-              private collectionService: CollectionService) { }
+              private store: Store<fromCollection.State>) { }
 
   ngOnInit() {
     this.subscriptions.push(this.route.params
@@ -49,16 +45,9 @@ export class DrinkDetailComponent implements OnInit, OnDestroy {
   }
 
   onAdd() {
-    this.store.select('drinks').subscribe(
-      (drinkState$: fromDrink.State) => {
-        this.store.dispatch(new CollectionActions.AddDrinks(
-          this.idDrink
-        ));
-        console.log(this.idDrink + ' DrinkDetail Component');
-      }
-    );
+    this.store.dispatch(new CollectionActions.AddDrinks(this.idDrink));
+    console.log(this.idDrink + ' DrinkDetail Component');
   }
-
 
 
 }

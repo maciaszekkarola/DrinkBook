@@ -1,3 +1,4 @@
+import { AddDrinks } from './../../my-collection/store/collection.actions';
 import { FetchDrinks } from './../store/drink.actions';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
@@ -10,7 +11,7 @@ import { unsubscriber } from '../../../shared/unsubscriber';
 import * as DrinkActions from '../store/drink.actions';
 
 import * as fromDrink from '../store/drink.reducers';
-// import * as fromApp from '../../../app.reducers';
+import * as fromCollection from '../../my-collection/store/collection.reducers';
 
 @Component({
   selector: 'app-drink-list',
@@ -37,7 +38,6 @@ export class DrinkListComponent implements OnInit, OnDestroy {
     this.store.select('drinks').subscribe(
       (dataState) => {
         this.drinkBook = dataState['drinks'];
-        // console.log(dataState);
       }
     );
 
@@ -46,8 +46,6 @@ export class DrinkListComponent implements OnInit, OnDestroy {
   onSelect(id: number) {
     this.selectedDrinkId = id;
     this.dataService.getDrink(id);
-    console.log(id);
-    this.selectedDrinkId = id;
   }
 
   ngOnDestroy() {

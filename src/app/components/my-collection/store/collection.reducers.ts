@@ -4,11 +4,13 @@ import * as CollectionActions from './collection.actions';
 export interface State {
     drinks: Drink[];
     selectedDrink: number;
+    selectedDrinks: number[];
 }
 
 const initialState: State = {
     drinks: [],
-    selectedDrink: null
+    selectedDrink: null,
+    selectedDrinks: []
 };
 
 export function collectionReducers(state = initialState, action: CollectionActions.CollectionAction) {
@@ -16,7 +18,8 @@ export function collectionReducers(state = initialState, action: CollectionActio
         case CollectionActions.ADD_DRINKS:
         return {
             ...state,
-            selectedDrink: action.payload
+            selectedDrink: action.payload,
+            selectedDrinks: [action.payload]
         };
         default:
         return state;
