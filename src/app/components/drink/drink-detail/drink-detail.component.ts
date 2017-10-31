@@ -10,7 +10,6 @@ import { DataService } from './../data.service';
 import { unsubscriber } from '../../../shared/unsubscriber';
 import 'rxjs/add/operator/take';
 
-import * as fromCollection from '../../my-collection/store/collection.reducers';
 import * as CollectionActions from '../../my-collection/store/collection.actions';
 import * as fromApp from '../../../app.reducers';
 
@@ -27,8 +26,7 @@ export class DrinkDetailComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private dataService: DataService,
-              private store: Store<fromCollection.State>,
-              private second_store: Store<fromApp.AppState>
+              private store: Store<fromApp.AppState>
             ) { }
 
   ngOnInit() {
@@ -44,6 +42,13 @@ export class DrinkDetailComponent implements OnInit, OnDestroy {
           ));
       }
     ));
+
+
+    this.store.select('collections', 'selectedDrinks').subscribe((sss) => {
+      this.favDrinks = sss;
+
+      console.log(this.favDrinks);
+    });
   }
 
   ngOnDestroy() {
@@ -52,23 +57,27 @@ export class DrinkDetailComponent implements OnInit, OnDestroy {
 
   onAdd() {
     // just add everything
-    // this.second_store.dispatch(new CollectionActions.AddDrinks(this.idDrink));
+    // this.store.dispatch(new CollectionActions.AddDrinks(this.idDrink));
 
+    if ( this.favDrinks.indexOf(this.idDrink) === -1 ) { 
+      this.store.dispatch(new CollectionActions.AddDrinks(this.idDrink));
+    }
 
     // add with condition - to be fixed
-    this.second_store.select('collections', 'selectedDrinks').take(1).subscribe(
-      (dataState) => {
-        console.log(dataState);
-        if ( dataState.length) {
-          dataState.forEach(element => {
-            if ( this.idDrink !== element ) {
-              this.store.dispatch(new CollectionActions.AddDrinks(this.idDrink));
-            }
-          });
-        } else {
-          this.store.dispatch(new CollectionActions.AddDrinks(this.idDrink));
-        }
-    });
+    // this.store.select('collections', 'selectedDrinks').take(1).subscribe(
+    //   (dataState) => {
+    //     console.log(dataState.length, 'dataState.length');
+    //     if ( dataState.length) {
+    //       dataState.forEach(element => {
+    //         console.log(element, 'element');
+    //         if ( this.idDrink !== element ) {
+             
+    //         }
+    //       });
+    //     } else {
+    //       return this.store.dispatch(new CollectionActions.AddDrinks(this.idDrink));
+    //     }
+    // });
   }
 
 

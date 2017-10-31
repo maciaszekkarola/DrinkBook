@@ -16,10 +16,8 @@ const initialState: State = {
 export function collectionReducers(state = initialState, action: CollectionActions.CollectionAction) {
     switch (action.type) {
         case CollectionActions.ADD_DRINKS:
-        console.log(state);
         return {
             ...state,
-            selectedDrink: action.payload,
             selectedDrinks: [...state.selectedDrinks, action.payload],
         };
 
@@ -27,7 +25,7 @@ export function collectionReducers(state = initialState, action: CollectionActio
         const oldCollections = [...state.selectedDrinks];
         const index = state.selectedIndex;
         oldCollections.splice(index, 1);
-        console.log(oldCollections);
+        // console.log(oldCollections);
 
         return {
             ...state,

@@ -8,10 +8,10 @@ import { Drink } from './../../../models/drink.model';
 import { DataService } from './../data.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { unsubscriber } from '../../../shared/unsubscriber';
-import * as DrinkActions from '../store/drink.actions';
 
+import * as DrinkActions from '../store/drink.actions';
+import * as fromApp from '../../../app.reducers';
 import * as fromDrink from '../store/drink.reducers';
-import * as fromCollection from '../../my-collection/store/collection.reducers';
 
 @Component({
   selector: 'app-drink-list',
@@ -26,7 +26,7 @@ export class DrinkListComponent implements OnInit, OnDestroy {
   drinkState$: Observable<fromDrink.State>;
 
   constructor(
-              private store: Store<fromDrink.FeatureState>,
+              private store: Store<fromApp.AppState>,
               private dataService: DataService,
               private router: Router,
               private route: ActivatedRoute) {
