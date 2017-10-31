@@ -55,7 +55,7 @@ export class DrinkDetailComponent implements OnInit, OnDestroy {
     // this.second_store.dispatch(new CollectionActions.AddDrinks(this.idDrink));
 
 
-    // add with condition
+    // add with condition - to be fixed
     this.second_store.select('collections', 'selectedDrinks').take(1).subscribe(
       (dataState) => {
         console.log(dataState);
@@ -69,18 +69,7 @@ export class DrinkDetailComponent implements OnInit, OnDestroy {
           this.store.dispatch(new CollectionActions.AddDrinks(this.idDrink));
         }
     });
-
-    // opcja gdzie dodaję wszystko do tablicy a potem redukuję po pojedynczych elementów ii wtedy dispatthc w store?
-    // this.favDrinks.push(this.idDrink);
-    // console.log(this.favDrinks);
-    // this.favDrinks.reduce(() => (prev, curr) {
-    //   return (prev.indexOf(curr);
-    // }
-
-
-
-
-
   }
+
 
 }
