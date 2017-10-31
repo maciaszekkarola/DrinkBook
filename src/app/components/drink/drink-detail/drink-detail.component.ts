@@ -44,10 +44,8 @@ export class DrinkDetailComponent implements OnInit, OnDestroy {
     ));
 
 
-    this.store.select('collections', 'selectedDrinks').subscribe((sss) => {
-      this.favDrinks = sss;
-
-      console.log(this.favDrinks);
+    this.store.select('collections', 'selectedDrinks').subscribe((data) => {
+      this.favDrinks = data;
     });
   }
 
@@ -56,28 +54,9 @@ export class DrinkDetailComponent implements OnInit, OnDestroy {
   }
 
   onAdd() {
-    // just add everything
-    // this.store.dispatch(new CollectionActions.AddDrinks(this.idDrink));
-
-    if ( this.favDrinks.indexOf(this.idDrink) === -1 ) { 
+    if ( this.favDrinks.indexOf(this.idDrink) === -1 ) {
       this.store.dispatch(new CollectionActions.AddDrinks(this.idDrink));
     }
-
-    // add with condition - to be fixed
-    // this.store.select('collections', 'selectedDrinks').take(1).subscribe(
-    //   (dataState) => {
-    //     console.log(dataState.length, 'dataState.length');
-    //     if ( dataState.length) {
-    //       dataState.forEach(element => {
-    //         console.log(element, 'element');
-    //         if ( this.idDrink !== element ) {
-             
-    //         }
-    //       });
-    //     } else {
-    //       return this.store.dispatch(new CollectionActions.AddDrinks(this.idDrink));
-    //     }
-    // });
   }
 
 
