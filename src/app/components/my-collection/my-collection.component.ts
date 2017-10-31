@@ -46,15 +46,10 @@ export class MyCollectionComponent implements OnInit {
           };
           console.log(this.drinkArr, this.drink['id']);
 
-        //  this.drinkArr.forEach(element => {
-        //    console.log(element['id]']);
-        //    if (element['id'] !== this.drink ) {
-        //     this.drinkArr.push(this.drink);
-        //    }
-        //  });
+
+          this.drinkArr.indexOf(this.drink) === -1 ? this.drinkArr.push(this.drink) : console.log ('already in array');
           // if (!this.drinkArr.includes(this.drink['id'])) {
-            // jesli this.drink[id] = drinkArr[drink[id]] ?????
-             this.drinkArr.push(this.drink);
+          //    this.drinkArr.push(this.drink);
           // }
 
         }

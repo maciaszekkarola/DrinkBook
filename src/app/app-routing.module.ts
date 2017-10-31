@@ -6,7 +6,7 @@ import { PreloadAllModules } from '@angular/router';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/drink', pathMatch: 'full'},
-  {path: 'drinks', loadChildren: './componnets/drinks/drink.module#DrinkModule'},
+  {path: 'drinks', loadChildren: './drinks/drink.module#DrinkModule'},
   {path: 'myCollection', component: MyCollectionComponent},
 ];
 
