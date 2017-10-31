@@ -6,7 +6,7 @@
         <li 
           *ngFor="let item of drinkArr, let i = index"
           class="list-group-item clearfix listItem">
-          <button class="btn-btn-primary pull-right" (click)="onDelete(i)">X</button>
+          <button type="button" class="close pull-right" aria-label="Close"  (click)="onDelete(i)"><span aria-hidden="true">&times;</span></button>
          <div>
             <h4 class="list-group-item-heading pull-left drinkName">
                 {{ item.name }}
@@ -14,7 +14,7 @@
             <img 
               [src]="item.path" 
               [alt]="item.name"
-              class="img-responsive pull-right"
+              class="img-responsive pull-right drinkPic"
               style="max-height: 100px">
          </div>
         </li>
