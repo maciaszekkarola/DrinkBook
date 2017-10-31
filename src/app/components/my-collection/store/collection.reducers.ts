@@ -19,8 +19,7 @@ export function collectionReducers(state = initialState, action: CollectionActio
         console.log([...state.selectedDrinks]);
         return {
             ...state,
-            selectedDrink: action.payload,
-            selectedDrinks: [...state.selectedDrinks, action.payload]
+            selectedDrinks: [...state.selectedDrinks, ...action.payload],
         };
 
         case CollectionActions.UPDATE_COLLECTION:

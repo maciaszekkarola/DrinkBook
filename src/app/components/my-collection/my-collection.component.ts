@@ -31,6 +31,7 @@ export class MyCollectionComponent implements OnInit {
   ngOnInit() {
     this.store.select('collections').subscribe(
       (dataState) => {
+        console.log(dataState);
         this.collection = dataState.selectedDrinks;
       }
     );
@@ -44,14 +45,8 @@ export class MyCollectionComponent implements OnInit {
             id: data['drinks'][0].idDrink,
             path: data['drinks'][0].strDrinkThumb
           };
-          console.log(this.drinkArr, this.drink['id']);
 
-
-          this.drinkArr.indexOf(this.drink) === -1 ? this.drinkArr.push(this.drink) : console.log ('already in array');
-          // if (!this.drinkArr.includes(this.drink['id'])) {
-          //    this.drinkArr.push(this.drink);
-          // }
-
+          this.drinkArr.push(this.drink);
         }
       );
     }
@@ -59,6 +54,7 @@ export class MyCollectionComponent implements OnInit {
 
   onDelete(index) {
     this.drinkArr.splice(index, 1);
+    this.collection.splice(index, 1);
     this.store.dispatch(new CollectionActions.UpdateCollection(index));
   }
 
