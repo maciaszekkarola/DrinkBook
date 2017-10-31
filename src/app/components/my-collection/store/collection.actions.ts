@@ -11,7 +11,7 @@ export class FetchDrinks implements Action {
 }
 export class AddDrinks implements Action {
     readonly type = ADD_DRINKS;
-    constructor(public payload: number[]) {}
+    constructor(public payload: number) {}
 }
 
 export class UpdateCollection implements Action {
