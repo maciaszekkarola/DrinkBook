@@ -43,7 +43,6 @@ export class DrinkDetailComponent implements OnInit, OnDestroy {
       }
     ));
 
-
     this.store.select('collections', 'selectedDrinks').subscribe((data) => {
       this.favDrinks = data;
     });
