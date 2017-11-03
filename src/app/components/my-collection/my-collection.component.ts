@@ -45,7 +45,6 @@ export class MyCollectionComponent implements OnInit {
             id: data['drinks'][0].idDrink,
             path: data['drinks'][0].strDrinkThumb
           };
-
           this.drinkArr.push(this.drink);
         }
       );
