@@ -3,8 +3,8 @@ import { DrinkItem } from './../../models/drinkItem.model';
 import { AppState } from './../../app.reducers';
 import { Store } from '@ngrx/store';
 import { Drink } from './../../models/drink.model';
-import { CollectionService } from './collection.service';
-import { DataService } from './../drink/data.service';
+import { CollectionService } from '../../shared/collection.service';
+import { DataService } from '../../shared/data.service';
 import { Component, OnInit } from '@angular/core';
 
 import * as fromCollection from './store/collection.reducers';

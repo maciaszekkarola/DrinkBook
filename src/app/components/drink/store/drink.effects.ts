@@ -1,5 +1,5 @@
 import { Drink } from './../../../models/drink.model';
-import { DataService } from './../data.service';
+import { DataService } from '../../../shared/data.service';
 import { Observable } from 'rxjs/Observable';
 import { Action } from '@ngrx/store';
 import { Injectable } from '@angular/core';

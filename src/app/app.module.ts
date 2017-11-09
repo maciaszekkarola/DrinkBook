@@ -1,29 +1,25 @@
-import { MyCollectionModule } from './components/my-collection/my-collection.module';
-import { AppRoutingModule } from './app-routing.module';
-import { DrinkEffects } from './components/drink/store/drink.effects';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
-import { reducers } from './app.reducers';
-import { DrinkModule } from './components/drink/drink.module';
-import { CollectionService } from './components/my-collection/collection.service';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { DataService} from './components/drink/data.service';
-import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
-import { NgModel } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import {MyCollectionModule} from './components/my-collection/my-collection.module';
+import {AppRoutingModule} from './app-routing.module';
+import {DrinkEffects} from './components/drink/store/drink.effects';
+import {CollectionEffects} from './components/my-collection/store/collection.effects';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreModule} from '@ngrx/store';
+import {reducers} from './app.reducers';
+import {DrinkModule} from './components/drink/drink.module';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
 
 
-import { AppComponent } from './app.component';
-import { DrinkListComponent } from './components/drink/drink-list/drink-list.component';
-import { DrinkItemComponent } from './components/drink/drink-list/drink-item/drink-item.component';
-import { DrinkDetailComponent } from './components/drink/drink-detail/drink-detail.component';
-import { DrinkComponent } from './components/drink/drink.component';
-import { HomeComponent } from './components/home/home.component';
-import { drinkReducers } from './components/drink/store/drink.reducers';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {AppComponent} from './app.component';
+import {HomeComponent} from './components/home/home.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {SharedModule} from './shared/shared.module';
+import {DataService} from './shared/data.service';
+import {HttpModule} from '@angular/http';
 
 
 @NgModule({
@@ -35,15 +31,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([DrinkEffects]),
+    EffectsModule.forRoot([DrinkEffects, CollectionEffects]),
     StoreRouterConnectingModule,
+    SharedModule,
     DrinkModule,
     MyCollectionModule,
     NgbModule.forRoot()
   ],
-  providers: [DataService, CollectionService],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

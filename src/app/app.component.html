@@ -9,6 +9,11 @@
       <li routerLinkActive = "active"><a routerLink = "/drink">Drink List</a></li>
       <li routerLinkActive = "active"><a routerLink = "/myCollection">My Collection</a></li>
     </ul>
+
+    <ul class="nav navbar-nav navbar-right" style="display:inline-block">
+          <li class="dropdown" style="cursor:pointer" ><a (click)="onSaveData()">Save</a></li>        
+          <li class="dropdown" style="cursor:pointer" ><a (click)="onFetchData()">Fetch</a></li>
+    </ul>
   </div>
 
 </nav>

@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 
 import { DrinkItem } from './../../../models/drinkItem.model';
-import { DataService } from './../data.service';
+import { DataService } from '../../../shared/data.service';
 import { unsubscriber } from '../../../shared/unsubscriber';
 import 'rxjs/add/operator/take';
 

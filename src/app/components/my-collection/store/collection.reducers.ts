@@ -1,6 +1,11 @@
-import { Drink } from './../../../models/drink.model';
 import * as CollectionActions from './collection.actions';
+import * as fromApp from '../../../app.reducers';
 
+export interface FeatureState extends fromApp.AppState {
+  selectedDrink: State;
+  selectedDrinks: State;
+  selectedIndex: State;
+}
 export interface State {
     selectedDrink: number;
     selectedDrinks: number[];

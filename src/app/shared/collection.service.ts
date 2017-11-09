@@ -1,5 +1,5 @@
-import { DataService } from './../drink/data.service';
-import { Drink } from './../../models/drink.model';
+import { DataService } from './data.service';
+import { Drink } from '../models/drink.model';
 import { Injectable } from '@angular/core';
 
 @Injectable()

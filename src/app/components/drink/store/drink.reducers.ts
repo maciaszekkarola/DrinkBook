@@ -1,8 +1,7 @@
 import * as DrinkActions from './drink.actions';
 import * as fromApp from '../../../app.reducers';
-import { Action } from '@ngrx/store';
 
-import { Drink } from './../../../models/drink.model';
+import { Drink } from '../../../models/drink.model';
 
 
 export interface FeatureState extends fromApp.AppState {

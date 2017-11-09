@@ -1,10 +1,9 @@
-import { Drink } from './../../../models/drink.model';
 import { Action } from '@ngrx/store';
 
 export const ADD_DRINKS = 'ADD_DRINKS';
 export const FETCH_DRINKS = 'FETCH_DRINKS';
 export const UPDATE_COLLECTION = 'UPDATE_COLLECTION';
-
+export const STORE_COLLECTION = 'STORE_COLLECTION';
 
 export class FetchDrinks implements Action {
     readonly type = FETCH_DRINKS;
@@ -19,7 +18,11 @@ export class UpdateCollection implements Action {
     constructor(public payload: number) {}
 }
 
+export class StoreCollection implements Action {
+    readonly type = STORE_COLLECTION;
+}
 
 
-export type CollectionAction = AddDrinks | FetchDrinks | UpdateCollection;
+
+export type CollectionAction = AddDrinks | FetchDrinks | UpdateCollection | StoreCollection;
 

@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Drink } from './../../../models/drink.model';
-import { DataService } from './../data.service';
+import { DataService } from '../../../shared/data.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { unsubscriber } from '../../../shared/unsubscriber';
 
