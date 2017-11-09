@@ -16,14 +16,13 @@ export class CollectionEffects {
     .ofType(CollectionActions.STORE_COLLECTION)
     .withLatestFrom(this.store.select('selectedDrinks'))
     .switchMap( ([action, state]) => {
-        console.log(state);
         const req = new HttpRequest(
             'PUT',
             `${url}drinks.json`,
             state.selectedDrinks,
             {reportProgress: true}
         );
-        console.log(req, state.selectedDrinks);
+        console.log(req);
         return this.http.request(req);
     });
 

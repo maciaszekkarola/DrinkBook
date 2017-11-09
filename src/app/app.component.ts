@@ -12,7 +12,7 @@ import * as CollectionActions from './components/my-collection/store/collection.
 
 
 export class AppComponent implements OnInit, OnDestroy {
-
+  selected = [];
     constructor(private store: Store<fromApp.AppState>) {}
 
     ngOnInit() {
@@ -20,14 +20,19 @@ export class AppComponent implements OnInit, OnDestroy {
         apiKey: 'AIzaSyBHuYU5iVi7XtfB1tKCRqewogj1GiZS4B4',
         authDomain: 'drink-ed520.firebaseapp.com'
       });
-
+      this.store.select('collections', 'selectedDrinks')
+        .subscribe(
+          (data) => {
+            console.log(data);
+            this.selected = data;
+          }
+        );
 
    }
 
-
-
    onSaveData() {
     this.store.dispatch(new CollectionActions.StoreCollection());
+    console.log(this.selected);
    }
 
     ngOnDestroy() {
